@@ -1,0 +1,52 @@
+[1] *  Azure for Students   c0f4d275-9cb0-44a4-80ba-9d6b86670c49  DPG Institute of Technology and Management
+
+
+az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/c0f4d275-9cb0-44a4-80ba-9d6b86670c49"
+
+
+Creating 'Contributor' role assignment under scope '/subscriptions/c0f4d275-9cb0-44a4-80ba-9d6b86670c49'
+The output includes credentials that you must protect. Be sure that you do not include these credentials in your code or check the credentials into your source control. For more information, see https://aka.ms/azadsp-cli
+{
+  "appId": "7d674a5a-4033-4a65-a349-d0452bca9fc2",
+  "displayName": "azure-cli-2025-06-21-13-17-35",
+  "password": "jJi8Q~1xHrJ6NOkkmuveFRqMupwnGX3zhbpMpbwX",
+  "tenant": "c96f5b58-b343-45a5-b254-f6a61221ed45"
+}
+
+
+az login --service-principal -u CLIENT_ID -p CLIENT_SECRET --tenant TENANT_ID
+az login --service-principal -u 7d674a5a-4033-4a65-a349-d0452bca9fc2 -p jJi8Q~1xHrJ6NOkkmuveFRqMupwnGX3zhbpMpbwX --tenant c96f5b58-b343-45a5-b254-f6a61221ed45
+
+
+
+[
+  {
+    "cloudName": "AzureCloud",
+    "homeTenantId": "c96f5b58-b343-45a5-b254-f6a61221ed45",
+    "id": "c0f4d275-9cb0-44a4-80ba-9d6b86670c49",
+    "isDefault": true,
+    "managedByTenants": [],
+    "name": "Azure for Students",
+    "state": "Enabled",
+    "tenantId": "c96f5b58-b343-45a5-b254-f6a61221ed45",
+    "user": {
+      "name": "7d674a5a-4033-4a65-a349-d0452bca9fc2",
+      "type": "servicePrincipal"
+    }
+  }
+
+these are the secret variable insted writing in configure them in file not a good pratcice make them export
+# sh
+export ARM_CLIENT_ID="7d674a5a-4033-4a65-a349-d0452bca9fc2"
+export ARM_CLIENT_SECRET="1jJi8Q~1xHrJ6NOkkmuveFRqMupwnGX3zhbpMpbwX"
+export ARM_TENANT_ID="c96f5b58-b343-45a5-b254-f6a61221ed45"
+export ARM_SUBSCRIPTION_ID="c0f4d275-9cb0-44a4-80ba-9d6b86670c49"  
+
+
+# terraform.tfvars file is usef to load the environemt variable
+
+# commonds used
+ terraform init
+ terraform fmt
+ terraform validate
+ terraform destroy --auto-approve
